@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A0965800-FB71-4F87-AF17-B24BB976FEE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E176AE28-6773-456A-B141-DB4AD8D95446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicGymnasticsPortal.Services.Data", "Services\RhythmicGymnasticsPortal.Services.Data\RhythmicGymnasticsPortal.Services.Data.csproj", "{5B0F5939-3F94-4A54-AC53-3EB1FF7D56D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicGymnasticsPortal.Data", "Data\RhythmicGymnasticsPortal.Data\RhythmicGymnasticsPortal.Data.csproj", "{2509C25D-BF7D-4BCF-A863-E633D12859B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicGymnasticsPortal.Models", "Data\RhythmicGymnasticsPortal.Models\RhythmicGymnasticsPortal.Models.csproj", "{1A5A764C-74D5-44AB-9507-12ACB46D13E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicGymnasticsPortal.Common", "RhythmicGymnasticsPortal.Common\RhythmicGymnasticsPortal.Common.csproj", "{885E33C3-28D0-44A0-8C70-B942BAEC69B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicGymnasticsPortal.Web", "RhythmicGymnasticsPortal.Web\RhythmicGymnasticsPortal.Web.csproj", "{E50784F8-8C03-4662-B5E2-92471AC5E9C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B0F5939-3F94-4A54-AC53-3EB1FF7D56D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B0F5939-3F94-4A54-AC53-3EB1FF7D56D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B0F5939-3F94-4A54-AC53-3EB1FF7D56D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B0F5939-3F94-4A54-AC53-3EB1FF7D56D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2509C25D-BF7D-4BCF-A863-E633D12859B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2509C25D-BF7D-4BCF-A863-E633D12859B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2509C25D-BF7D-4BCF-A863-E633D12859B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2509C25D-BF7D-4BCF-A863-E633D12859B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A5A764C-74D5-44AB-9507-12ACB46D13E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A5A764C-74D5-44AB-9507-12ACB46D13E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A5A764C-74D5-44AB-9507-12ACB46D13E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A5A764C-74D5-44AB-9507-12ACB46D13E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885E33C3-28D0-44A0-8C70-B942BAEC69B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885E33C3-28D0-44A0-8C70-B942BAEC69B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885E33C3-28D0-44A0-8C70-B942BAEC69B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885E33C3-28D0-44A0-8C70-B942BAEC69B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E50784F8-8C03-4662-B5E2-92471AC5E9C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E50784F8-8C03-4662-B5E2-92471AC5E9C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E50784F8-8C03-4662-B5E2-92471AC5E9C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E50784F8-8C03-4662-B5E2-92471AC5E9C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B0F5939-3F94-4A54-AC53-3EB1FF7D56D4} = {E176AE28-6773-456A-B141-DB4AD8D95446}
+		{2509C25D-BF7D-4BCF-A863-E633D12859B8} = {A0965800-FB71-4F87-AF17-B24BB976FEE4}
+		{1A5A764C-74D5-44AB-9507-12ACB46D13E1} = {A0965800-FB71-4F87-AF17-B24BB976FEE4}
+	EndGlobalSection
+EndGlobal

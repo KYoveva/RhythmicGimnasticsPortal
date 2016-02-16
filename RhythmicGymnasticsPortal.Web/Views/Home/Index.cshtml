@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron transparentBlock">
+    <h1 id="home-header" class="text-center">Rhythmic Gymnastics</h1>
+</div>
+
+<div class="jumbotron transparentBlock">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">Latest News</div>
+        @{Html.RenderAction("GetNewsPartial");}
+    </div>
+</div>
