@@ -4,9 +4,12 @@
     using AutoMapper.QueryableExtensions;
     using RhythmicGymnasticsPortal.Services.Data.Contracts;
     using RhythmicGymnasticsPortal.Web.Models.NewsModels;
+    using PagedList;
 
     public class HomeController : Controller
     {
+        private const int PageSize = 3;
+
         private INewsService newsService;
 
         public HomeController(INewsService newsService)
@@ -21,14 +24,16 @@
 
         [HttpGet]
         [ChildActionOnly]
-        public ActionResult GetNewsPartial()
+        public ActionResult GetNewsPartial(int? page)
         {
             var newsData =
                 this.newsService
                         .LatestNews()
                         .ProjectTo<NewsSimpleViewModel>();
 
-            return this.PartialView("_SimpleNewsPartial", newsData);
+            int pageNumber = page ?? 1;
+
+            return this.PartialView("_SimpleNewsPartial", newsData.ToPagedList(pageNumber, PageSize));
         }
 
     }

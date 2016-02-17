@@ -1,0 +1,28 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsDetailsViewModel>
+@foreach (var news in Model)
+{
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="badge">by: @news.Author</span>
+            <div class="row">
+                <div class="col-sm-8">
+                    <p class="text-muted">@news.Title</p>
+                    <p>
+                        @if (news.Content.Length <= 100)
+                        {
+                            @news.Content;
+                        }
+                        @if (news.Content.Length > 100)
+                {
+                            @news.Content.Substring(0, 100);
+                            <span>... @Html.ActionLink("Read More", "Details/" + news.Id, "News")</span>
+                        }
+                    </p>
+                    <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>&nbsp;@news.DateCreated</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+}
+

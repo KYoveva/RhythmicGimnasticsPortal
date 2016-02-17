@@ -24,7 +24,7 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
         {
             var news = this.news
                 .AllNews()
-                .ProjectTo<NewsListViewModel>();
+                .ProjectTo<NewsDetailsViewModel>();
 
             int pageNumber = page ?? 1;
 
@@ -48,25 +48,25 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
             return this.View(news);
         }
 
-        private IQueryable<NewsListViewModel> GetSorted(IQueryable<NewsListViewModel> allNews, string sortOrder)
+        private IQueryable<NewsDetailsViewModel> GetSorted(IQueryable<NewsDetailsViewModel> allNews, string sortOrder)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.DateSortParm = String.IsNullOrEmpty(sortOrder) ? "Date" : "";
-            ViewBag.NameSortParm = sortOrder == "Title" ? "name_desc" : "Title";
+            ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
 
             switch (sortOrder)
             {
-                case "Title":
-                    allNews = allNews.OrderBy(a => a.Title);
+                case "Name":
+                    allNews = allNews.OrderBy(n => n.Title);
                     break;
                 case "name_desc":
-                    allNews = allNews.OrderByDescending(a => a.Title);
+                    allNews = allNews.OrderByDescending(n => n.Title);
                     break;
                 case "Date":
-                    allNews = allNews.OrderBy(a => a.DateCreated);
+                    allNews = allNews.OrderBy(n => n.DateCreated);
                     break;
                 default:
-                    allNews = allNews.OrderByDescending(a => a.DateCreated);
+                    allNews = allNews.OrderByDescending(n => n.DateCreated);
                     break;
             }
 
