@@ -212,9 +212,11 @@
     <Compile Include="Infrastructure\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\IMapFrom.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Comments\CommentsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsModels\NewsDetailsViewModel.cs" />
+    <Compile Include="Models\NewsModels\NewsListViewModel.cs" />
     <Compile Include="Models\NewsModels\NewsSimpleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -222,6 +224,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\21445963-Rhythmic-gymnastics-woman-with-ribbon-vector-abstract-background-splashes-for-poster-Stock-Vector.jpg" />
+    <Content Include="Content\Images\background.png" />
     <Content Include="Content\Images\images.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />

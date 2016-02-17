@@ -14,6 +14,8 @@
 
         public IDbSet<News> News { get; set; }
 
+        public IDbSet<Comment> Comments { get; set; }
+
         public static RhythmicGymnasticsPortalDbContext Create()
         {
             return new RhythmicGymnasticsPortalDbContext();

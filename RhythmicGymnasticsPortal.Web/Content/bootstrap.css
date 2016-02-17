@@ -59,6 +59,9 @@ html {
 
 body {
     margin: 0;
+    background-image: url(/Content/Images/background.png);
+    background-repeat: no-repeat;
+    background-position:top;
 }
 
 a:focus {
@@ -5154,9 +5157,9 @@ a.list-group-item.active > .badge,
     .container .jumbotron {
         padding-right: 60px;
         padding-left: 60px;
-        background:none;
-        box-shadow:none;
-        border:1px solid #dddddd;
+        background: none;
+        box-shadow: none;
+        border: 1px solid #dddddd;
     }
 
     .jumbotron h1 {

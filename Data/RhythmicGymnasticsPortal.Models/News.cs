@@ -1,11 +1,18 @@
 ﻿namespace RhythmicGymnasticsPortal.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class News
     {
+        private ICollection<Comment> comments;
+
+        public News()
+        {
+            this.comments = new HashSet<Comment>();
+        }     
+
         [Key]
         public int Id { get; set; }
 
@@ -23,5 +30,11 @@
         public string AuthorId { get; set; }
 
         public virtual User Author { get; set; }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
+        }
     }
 }
