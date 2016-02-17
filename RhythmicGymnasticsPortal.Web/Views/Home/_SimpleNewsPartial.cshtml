@@ -1,4 +1,9 @@
-﻿@model IEnumerable<RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsSimpleViewModel>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsSimpleViewModel>
+
+@section styles {
+    @Styles.Render("~/bundles/pagedlist")
+}
 
 @{
     ViewBag.Title = "_SimpleNewsPartial";
@@ -7,10 +12,15 @@
 @foreach (var news in Model)
 {
     <div class="list-group">
-        <a href="#" class="list-group-item active">
+        <a href="#" class="list-group-item list-group-item-success">
             <h4 class="list-group-item-heading">@news.Title</h4>
             <p class="list-group-item-text">@news.Content</p>
         </a>
     </div>
 }
+<div class="row">
+    <div class="col-md-9">
+        @Html.Partial("_PagingPartial", Model)
+    </div>
+</div>
 
