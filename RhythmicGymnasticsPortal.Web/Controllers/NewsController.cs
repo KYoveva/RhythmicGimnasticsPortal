@@ -11,7 +11,7 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
 {
     public class NewsController : Controller
     {
-        private const int PageSize = 3;
+        private const int PageSize = 10;
 
         private INewsService news;
 

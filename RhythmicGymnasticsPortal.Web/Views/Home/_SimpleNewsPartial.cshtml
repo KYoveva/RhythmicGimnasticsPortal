@@ -11,12 +11,26 @@
 
 @foreach (var news in Model)
 {
-    <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-success">
-            <h4 class="list-group-item-heading">@news.Title</h4>
-            <p class="list-group-item-text">@news.Content</p>
-        </a>
-    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-8">
+                    <p class="text-muted">@news.Title</p>
+                    <p>
+                        @if (news.Content.Length <= 100)
+                        {
+                            @news.Content;
+                        }
+                        @if (news.Content.Length > 100)
+                {
+                            @news.Content.Substring(0, 100);
+                            <span>... @Html.ActionLink("Read More", "Details/" + news.Id, "News")</span>
+                        }
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
 }
 <div class="row">
     <div class="col-md-9">

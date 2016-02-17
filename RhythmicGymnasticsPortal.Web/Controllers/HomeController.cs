@@ -8,7 +8,7 @@
 
     public class HomeController : Controller
     {
-        private const int PageSize = 3;
+        private const int PageSize = 5;
 
         private INewsService newsService;
 

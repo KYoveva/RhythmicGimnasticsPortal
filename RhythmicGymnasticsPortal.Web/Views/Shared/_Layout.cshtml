@@ -9,7 +9,7 @@
     @RenderSection("styles", required: false)
 
 </head>
-<body>
+<body style="background-image:url(/Content/Images/images.jpg)">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,11 +22,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("News", "All", "News", new { Area = "" }, null)</li>
-                    }
+                    <li>@Html.ActionLink("News", "All", "News", new { Area = "" }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
