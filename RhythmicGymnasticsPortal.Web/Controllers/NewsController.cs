@@ -24,7 +24,7 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
         {
             var news = this.news
                 .AllNews()
-                .ProjectTo<NewsListViewModel>();
+                .ProjectTo<NewsDetailsViewModel>();
 
             int pageNumber = page ?? 1;
 
@@ -48,7 +48,7 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
             return this.View(news);
         }
 
-        private IQueryable<NewsListViewModel> GetSorted(IQueryable<NewsListViewModel> allNews, string sortOrder)
+        private IQueryable<NewsDetailsViewModel> GetSorted(IQueryable<NewsDetailsViewModel> allNews, string sortOrder)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.DateSortParm = String.IsNullOrEmpty(sortOrder) ? "Date" : "";

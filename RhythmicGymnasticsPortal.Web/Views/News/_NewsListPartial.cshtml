@@ -1,10 +1,11 @@
 ﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsListViewModel>
+@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsDetailsViewModel>
 @foreach (var news in Model)
 {
     <ul class="list-group">
         <li class="list-group-item">
             <span class="badge">by: @news.Author</span>
+            <span class="badge"><span class="glyphicon glyphicon-comment"></span> @news.Comments.Count()</span>
             <div class="row">
                 <div class="col-sm-8">
                     <p class="text-muted">@news.Title</p>
