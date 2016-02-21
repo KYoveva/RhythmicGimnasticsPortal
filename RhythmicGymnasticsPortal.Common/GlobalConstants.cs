@@ -4,7 +4,7 @@
     {
         public const string AdminRole = "Admin";
 
-        public const int LatestNewsCount = 15;
+        public const int LatestNewsCount = 5;
 
         public const string MVCProject = "RhythmicGymnasticsPortal.Web";
 

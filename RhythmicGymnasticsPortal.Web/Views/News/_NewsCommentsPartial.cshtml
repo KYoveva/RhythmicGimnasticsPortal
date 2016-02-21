@@ -1,0 +1,33 @@
+﻿@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.Comments.CommentsViewModel>
+@using PagedList.Mvc;
+
+@section styles {
+    @Styles.Render("~/bundles/pagedlist")
+}
+
+@{
+    ViewBag.Title = "_NewsCommentsPartial";
+}
+
+<div class="col-sm-8">
+    <h3>Comments</h3>
+    @foreach (var comment in Model)
+    {
+        <table>
+            <tr>
+                <td style="vertical-align:top"><img class="media-object" src="@comment.Avatar" width="50"></td>
+                <td>
+                    <div class="well">@comment.Content</div>
+                    <span class="glyphicon glyphicon-calendar top"></span>&nbsp;@comment.DateCreated
+                    <span class="badge top">by: @comment.Author </span>
+                </td>
+            </tr>
+        </table>
+            <br />
+    }
+</div>
+<div class="row">
+    <div class="col-md-9">
+        @Html.Partial("_NewsCommentsPagingPartial", Model)
+    </div>
+</div>

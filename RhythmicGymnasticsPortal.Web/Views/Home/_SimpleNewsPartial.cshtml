@@ -1,9 +1,4 @@
-﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsSimpleViewModel>
-
-@section styles {
-    @Styles.Render("~/bundles/pagedlist")
-}
+﻿@model IEnumerable<RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsSimpleViewModel>
 
 @{
     ViewBag.Title = "_SimpleNewsPartial";
@@ -15,7 +10,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col-sm-8">
-                    <p class="text-muted">@news.Title</p>
+                    <p class="text-muted">@Html.ActionLink(news.Title, "Details/" + news.Id, "News")</p>
                     <p>
                         @if (news.Content.Length <= 100)
                         {
@@ -32,9 +27,3 @@
         </li>
     </ul>
 }
-<div class="row">
-    <div class="col-md-9">
-        @Html.Partial("_PagingPartial", Model)
-    </div>
-</div>
-

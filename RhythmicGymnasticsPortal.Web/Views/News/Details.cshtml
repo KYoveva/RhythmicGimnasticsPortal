@@ -11,14 +11,14 @@
                 <div class="col-sm-8">
                     <h1 class="text-muted">@Html.DisplayFor(m => m.Title, "Title")</h1>
                     <p>
-                        @Html.DisplayFor(m => m.Content, "Content");
+                        @Html.DisplayFor(m => m.Content, "Content")
                     </p>
                     <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>&nbsp;@Model.DateCreated  <span class="badge">by: @Model.Author </span></p>
                 </div>
             </div>
             <br />
             <div class="row">
-                <div class="col-sm-8">
+                @*<div class="col-sm-8">
                     <h3>Comments</h3>
                     @foreach (var comment in Model.Comments)
                     {
@@ -34,12 +34,9 @@
                         </table>
                         <br />
                     }
-                </div>
+                </div>*@
+                @{Html.RenderAction("_NewsCommentsPartial");}
             </div>
         </div>
     </div>
 </div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryajax")
-    @Scripts.Render("~/bundles/backbuttonlogic")
-}

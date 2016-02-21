@@ -2,14 +2,13 @@
 {
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
-    using RhythmicGymnasticsPortal.Services.Data.Contracts;
-    using RhythmicGymnasticsPortal.Web.Models.NewsModels;
+    using Models.NewsModels;
     using PagedList;
+    using Services.Data.Contracts;
+    using Models.Comments;
 
     public class HomeController : Controller
     {
-        private const int PageSize = 5;
-
         private INewsService newsService;
 
         public HomeController(INewsService newsService)
@@ -19,22 +18,19 @@
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         [HttpGet]
         [ChildActionOnly]
-        public ActionResult GetNewsPartial(int? page)
+        public ActionResult GetNewsPartial()
         {
             var newsData =
                 this.newsService
                         .LatestNews()
                         .ProjectTo<NewsSimpleViewModel>();
 
-            int pageNumber = page ?? 1;
-
-            return this.PartialView("_SimpleNewsPartial", newsData.ToPagedList(pageNumber, PageSize));
+            return this.PartialView("_SimpleNewsPartial", newsData);
         }
-
     }
 }

@@ -6,6 +6,7 @@ namespace RhythmicGymnasticsPortal.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
+    using System.Linq;
 
     public sealed class Configuration : DbMigrationsConfiguration<RhythmicGymnasticsPortalDbContext>
     {
@@ -20,8 +21,14 @@ namespace RhythmicGymnasticsPortal.Data.Migrations
         protected override void Seed(RhythmicGymnasticsPortalDbContext context)
         {
             this.userManager = new UserManager<User>(new UserStore<User>(context));
-            //this.SeedRoles(context);
-            //this.SeedUsers(context);
+            if (!context.Roles.Any())
+            {
+                this.SeedRoles(context);
+            }
+            if (!context.Users.Any(x=>x.UserName=="admin"))
+            {
+                this.SeedUsers(context);
+            }
         }
 
         private void SeedRoles(RhythmicGymnasticsPortalDbContext context)
@@ -35,7 +42,7 @@ namespace RhythmicGymnasticsPortal.Data.Migrations
             var user = new User
             {
                 Email = "admin@admin.com",
-                UserName = "admin@admin.com",
+                UserName = "admin",
                 FirstName = "Kristina",
                 LastName = "Yoveva"
             };

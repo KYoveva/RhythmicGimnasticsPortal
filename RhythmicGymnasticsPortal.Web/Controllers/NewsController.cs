@@ -1,26 +1,29 @@
-﻿using AutoMapper.QueryableExtensions;
-using RhythmicGymnasticsPortal.Services.Data.Contracts;
-using RhythmicGymnasticsPortal.Web.Models.NewsModels;
-using System;
-using System.Linq;
-using System.Net;
-using System.Web.Mvc;
-using PagedList;
-
-namespace RhythmicGymnasticsPortal.Web.Controllers
+﻿namespace RhythmicGymnasticsPortal.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
+    using Models.NewsModels;
+    using PagedList;
+    using Services.Data.Contracts;
+    using Models.Comments;
+
     public class NewsController : Controller
     {
         private const int PageSize = 10;
 
         private INewsService news;
+        private ICommentService comments;
 
-        public NewsController(INewsService news)
+        public NewsController(INewsService news, ICommentService comments)
         {
             this.news = news;
+            this.comments = comments;
         }
 
-        public ActionResult All(string sortOrder, int? page)
+        public ActionResult All(int? page, string sortOrder)
         {
             var news = this.news
                 .AllNews()
@@ -51,7 +54,7 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
         private IQueryable<NewsDetailsViewModel> GetSorted(IQueryable<NewsDetailsViewModel> allNews, string sortOrder)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.DateSortParm = String.IsNullOrEmpty(sortOrder) ? "Date" : "";
+            ViewBag.DateSortParm = string.IsNullOrEmpty(sortOrder) ? "Date" : string.Empty;
             ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
 
             switch (sortOrder)
@@ -71,6 +74,21 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
             }
 
             return allNews;
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult _NewsCommentsPartial(int? page, int id)
+        {
+            var newsData =
+                this.comments
+                .CommentsByNews(id)
+                .OrderByDescending(x=>x.DateCreated)
+                .ProjectTo<CommentsViewModel>();
+
+            int pageNumber = page ?? 1;
+
+            return this.View(newsData.ToPagedList(pageNumber, PageSize));
         }
     }
 }

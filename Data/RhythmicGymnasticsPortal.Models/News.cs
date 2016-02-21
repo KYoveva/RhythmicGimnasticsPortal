@@ -7,10 +7,12 @@
     public class News
     {
         private ICollection<Comment> comments;
+        private ICollection<NewsLike> likes;
 
         public News()
         {
             this.comments = new HashSet<Comment>();
+            this.likes = new HashSet<NewsLike>();
         }     
 
         [Key]
@@ -31,10 +33,20 @@
 
         public virtual User Author { get; set; }
 
+        public string CategoryId { get; set; }
+
+        public virtual NewsCategory Category { get; set; }
+
         public virtual ICollection<Comment> Comments
         {
             get { return this.comments; }
             set { this.comments = value; }
+        }
+
+        public virtual ICollection<NewsLike> Likes
+        {
+            get { return this.likes; }
+            set { this.likes = value; }
         }
     }
 }

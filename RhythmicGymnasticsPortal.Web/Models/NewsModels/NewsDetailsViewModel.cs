@@ -6,6 +6,7 @@
     using Comments;
     using Infrastructure;
     using RhythmicGymnasticsPortal.Models;
+    using System.Linq;
 
     public class NewsDetailsViewModel : IMapFrom<News>, IHaveCustomMappings
     {
@@ -19,13 +20,16 @@
 
         public string Author { get; set; }
 
-        public IEnumerable<CommentsViewModel> Comments { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
+
+        public int CommentsCount { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<News, NewsDetailsViewModel>()
                 .ForMember(m => m.Author, opt => opt.MapFrom(x => x.Author.UserName))
-                .ForMember(m => m.Comments, opt => opt.MapFrom(x => x.Comments));
+                .ForMember(m=>m.CommentsCount, opt=> opt.MapFrom(x=>x.Comments.Any() ? x.Comments.Count : 0))
+                .ForMember(m=>m.Comments, opt => opt.MapFrom(x => x.Comments));
         }
     }
 }
