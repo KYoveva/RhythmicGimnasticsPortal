@@ -1,4 +1,6 @@
-﻿@model RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsDetailsViewModel
+﻿@using RhythmicGymnasticsPortal.Web.Area.Private.Models.News
+
+@model RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -18,23 +20,12 @@
             </div>
             <br />
             <div class="row">
-                @*<div class="col-sm-8">
-                    <h3>Comments</h3>
-                    @foreach (var comment in Model.Comments)
-                    {
-                        <table>
-                            <tr>
-                                <td style="vertical-align:top"><img class="media-object" src="@comment.Avatar" width="50"></td>
-                                <td>
-                                    <div class="well">@comment.Content</div>
-                                    <span class="glyphicon glyphicon-calendar top"></span>&nbsp;@comment.DateCreated
-                                    <span class="badge top">by: @comment.Author </span>
-                                </td>
-                            </tr>
-                        </table>
-                        <br />
-                    }
-                </div>*@
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.Partial("~/Areas/Private/Views/Comment/_AddCommentPartial.cshtml", new CommentsInputModel(Model.Id))
+                }
+            </div>
+            <div class="row">
                 @{Html.RenderAction("_NewsCommentsPartial");}
             </div>
         </div>

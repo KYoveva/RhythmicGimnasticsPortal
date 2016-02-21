@@ -1,20 +1,22 @@
 ﻿namespace RhythmicGymnasticsPortal.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
     using Models.Comments;
     using PagedList;
     using Services.Data.Contracts;
+    using RhythmicGymnasticsPortal.Models;
+    using Microsoft.AspNet.Identity;
+    using Area.Private.Models.News;
 
     public class CommentsController : Controller
     {
         private const int PageSize = 10;
 
-        private ICommentService comments;
+        private ICommentsService comments;
 
-        public CommentsController(ICommentService comments)
+        public CommentsController(ICommentsService comments)
         {
             this.comments = comments;
         }

@@ -9,15 +9,16 @@
     using PagedList;
     using Services.Data.Contracts;
     using Models.Comments;
+    using RhythmicGymnasticsPortal.Models;
 
     public class NewsController : Controller
     {
         private const int PageSize = 10;
 
         private INewsService news;
-        private ICommentService comments;
+        private ICommentsService comments;
 
-        public NewsController(INewsService news, ICommentService comments)
+        public NewsController(INewsService news, ICommentsService comments)
         {
             this.news = news;
             this.comments = comments;
@@ -83,7 +84,7 @@
             var newsData =
                 this.comments
                 .CommentsByNews(id)
-                .OrderByDescending(x=>x.DateCreated)
+                .OrderByDescending(x => x.DateCreated)
                 .ProjectTo<CommentsViewModel>();
 
             int pageNumber = page ?? 1;

@@ -19,6 +19,7 @@
         [MaxLength(1000)]
         public string Content { get; set; }
 
+        [Required]
         public DateTime DateCreated { get; set; }
 
         public string AuthorId { get; set; }
