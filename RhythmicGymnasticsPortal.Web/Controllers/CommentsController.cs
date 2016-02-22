@@ -1,24 +1,30 @@
 ﻿namespace RhythmicGymnasticsPortal.Web.Controllers
 {
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
+    using Area.Private.Models.News;
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Microsoft.AspNet.Identity;
     using Models.Comments;
     using PagedList;
-    using Services.Data.Contracts;
     using RhythmicGymnasticsPortal.Models;
-    using Microsoft.AspNet.Identity;
-    using Area.Private.Models.News;
+    using Services.Data.Contracts;
+    using Models.NewsModels;
 
-    public class CommentsController : Controller
+    public class CommentsController : BaseController
     {
         private const int PageSize = 10;
 
         private ICommentsService comments;
+        private INewsService news;  
 
-        public CommentsController(ICommentsService comments)
+        public CommentsController(IUsersService users, ICommentsService comments, INewsService news)
+            :base(users)
         {
             this.comments = comments;
+            this.news = news;
         }
 
         public ActionResult AllCommentsByNews(string sortOrder, int? page, int id)
@@ -32,6 +38,29 @@
             var sorted = this.GetSorted(comments, sortOrder);
 
             return this.View(sorted.ToPagedList(pageNumber, PageSize));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult AddComment(CommentsInputModel model)
+        {
+            var user = this.CurrentUser;
+            if (model != null && ModelState.IsValid)
+            {
+                var comment = Mapper.Map<Comment>(model);
+                comment.AuthorId = user.Id;
+
+                comment = this.comments.AddComment(comment);
+
+                var viewModel = Mapper.Map<CommentsViewModel>(comment);
+                viewModel.Avatar = user.Avatar;
+                viewModel.Author = user.UserName;
+               
+                return this.PartialView("~/Areas/Private/Views/Comment/_SingleCommentPartial.cshtml", viewModel);
+            }
+
+            throw new HttpException(400, "Invalid Comment");
         }
 
         private IQueryable<CommentsViewModel> GetSorted(IQueryable<CommentsViewModel> allComments, string sortOrder)

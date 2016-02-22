@@ -1,6 +1,5 @@
 ﻿namespace RhythmicGymnasticsPortal.Services.Data
 {
-    using System;
     using System.Linq;
     using Contracts;
     using Models;

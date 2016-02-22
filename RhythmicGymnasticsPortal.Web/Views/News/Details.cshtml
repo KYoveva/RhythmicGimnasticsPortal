@@ -16,6 +16,18 @@
                         @Html.DisplayFor(m => m.Content, "Content")
                     </p>
                     <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>&nbsp;@Model.DateCreated  <span class="badge">by: @Model.Author </span></p>
+                    @*<span class="badge" data-id="@Model.Id" data-action="up">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </span>
+                    <div class="row" data-id="@Model.Id" data-action="likesCount">@Model.LikesCount</div>
+                    <span class="badge" data-id="@Model.Id" data-action="down">
+                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                    </span>*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="row" data-id="@Model.Id" data-action="up"><span class="glyphicon glyphicon glyphicon-thumbs-up"></span></div>
+                    }
+                    <div class="row" data-id="@Model.Id" data-action="likesCount">@Model.LikesCount</div>
                 </div>
             </div>
             <br />
@@ -31,3 +43,28 @@
         </div>
     </div>
 </div>
+<style>
+    div[data-action="up"], div[data-action="down"] {
+        cursor: pointer;
+    }
+</style>
+@section scripts{
+    <script>
+        $("div[data-action='up'").click(function () {
+            var id = $(this).attr("data-id");
+            likeClick(id, 1);
+        });
+        //$("div[data-action='down'").click(function () {
+        //    var id = $(this).attr("data-id");
+        //    likeClick(id, -1);
+        //});
+
+        function likeClick(id, likeType) {
+            $.post("/NewsLike/Like", { newsId: id, likeType: likeType },
+                function (data) {
+                    var likesCount = data.Count;
+                    $("div[data-action='likesCount'][data-id='" + id + "']").html(likesCount)
+                });
+        }
+    </script>
+}

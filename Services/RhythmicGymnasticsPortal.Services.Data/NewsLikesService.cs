@@ -1,5 +1,6 @@
 ﻿namespace RhythmicGymnasticsPortal.Services.Data
 {
+    using System;
     using System.Linq;
     using Contracts;
     using Models;
@@ -14,15 +15,29 @@
             this.likes = likes;
         }
 
+        public NewsLike Add(NewsLike toAdd)
+        {
+            this.likes.Add(toAdd);
+            this.likes.SaveChanges();
+            return toAdd;
+        }
+
         public IQueryable<NewsLike> AllLikes()
         {
             return this.likes.All();
         }
 
-        public IQueryable<NewsLike> LikeByNews(int id)
+        public NewsLike Delete(NewsLike toDelete)
+        {
+            this.likes.Delete(toDelete);
+            likes.SaveChanges();
+            return toDelete;
+        }
+
+        public NewsLike LikeByNews(int id)
         {
             return this.likes.All()
-                .Where(x => x.NewsId == id);
+                .FirstOrDefault(x => x.NewsId == id);
         }
     }
 }

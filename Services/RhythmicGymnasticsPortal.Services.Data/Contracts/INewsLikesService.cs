@@ -7,6 +7,10 @@
     {
         IQueryable<NewsLike> AllLikes();
 
-        IQueryable<NewsLike> LikeByNews(int id);
+        NewsLike LikeByNews(int id);
+
+        NewsLike Add(NewsLike toAdd);
+
+        NewsLike Delete(NewsLike toDelete);
     }
 }

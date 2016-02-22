@@ -1,7 +1,7 @@
 ﻿namespace RhythmicGymnasticsPortal.Services.Data.Contracts
 {
     using System.Linq;
-    using RhythmicGymnasticsPortal.Models;
+    using Models;
 
     public interface IUsersService
     {

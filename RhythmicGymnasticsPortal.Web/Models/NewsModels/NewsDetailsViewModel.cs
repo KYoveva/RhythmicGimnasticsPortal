@@ -24,12 +24,15 @@
 
         public int CommentsCount { get; set; }
 
+        public int LikesCount { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<News, NewsDetailsViewModel>()
                 .ForMember(m => m.Author, opt => opt.MapFrom(x => x.Author.UserName))
                 .ForMember(m=>m.CommentsCount, opt=> opt.MapFrom(x=>x.Comments.Any() ? x.Comments.Count : 0))
-                .ForMember(m=>m.Comments, opt => opt.MapFrom(x => x.Comments));
+                .ForMember(m=>m.Comments, opt => opt.MapFrom(x => x.Comments))
+                .ForMember(m=>m.LikesCount, opt=> opt.MapFrom(x=>x.Likes.Any() ? x.Likes.Sum(t=>(int)t.Type) : 0));
         }
     }
 }

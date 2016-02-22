@@ -10,10 +10,14 @@
     public class User : IdentityUser
     {
         private ICollection<News> news;
+        private ICollection<NewsLike> newsLikes;
+        private ICollection<CommentLike> commentLikes;
 
         public User()
         {
-            this.news = new HashSet<News>();       
+            this.news = new HashSet<News>();
+            this.newsLikes = new HashSet<NewsLike>();
+            this.commentLikes = new HashSet<CommentLike>();
         }
 
         [Required]
@@ -30,6 +34,18 @@
         {
             get { return this.news; }
             set { this.news = value; }
+        }
+
+        public virtual ICollection<NewsLike> NewsLikes
+        {
+            get { return this.newsLikes; }
+            set { this.newsLikes = value; }
+        }
+
+        public virtual ICollection<CommentLike> CommentLikes
+        {
+            get { return this.commentLikes; }
+            set { this.commentLikes = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

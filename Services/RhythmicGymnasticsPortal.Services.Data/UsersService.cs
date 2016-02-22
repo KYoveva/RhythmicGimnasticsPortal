@@ -2,12 +2,12 @@
 {
     using System.Linq;
     using Models;
-    using RhythmicGymnasticsPortal.Services.Data.Contracts;
     using RhythmicGymnasticsPortal.Data.Repositories;
+    using Contracts;
 
     public class UsersService : IUsersService
     {
-        private IRepository<User> users;
+        private readonly IRepository<User> users;
 
         public UsersService(IRepository<User> users)
         {
