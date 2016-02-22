@@ -4,6 +4,7 @@
     using AutoMapper;
     using RhythmicGymnasticsPortal.Models;
     using RhythmicGymnasticsPortal.Web.Infrastructure;
+    using System.Linq;
 
     public class CommentsViewModel : IMapFrom<Comment>, IHaveCustomMappings
     {
@@ -19,11 +20,14 @@
 
         public int NewsId { get; set; }
 
+        public int LikesCount { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Comment, CommentsViewModel>()
                .ForMember(r => r.Avatar, opts => opts.MapFrom(x => x.Author.Avatar))
-               .ForMember(r => r.Author, opts => opts.MapFrom(x => x.Author.UserName));
+               .ForMember(r => r.Author, opts => opts.MapFrom(x => x.Author.UserName))
+               .ForMember(r=>r.LikesCount, opts => opts.MapFrom(x=>x.Likes.Any() ? x.Likes.Sum(t => (int)t.Type) : 0));
         }
     }
 }

@@ -7,6 +7,10 @@
     {
         IQueryable<CommentLike> AllLikes();
 
-        IQueryable<CommentLike> LikeByComments(int id);
+        CommentLike LikeByComments(int id);
+
+        CommentLike Add(CommentLike toAdd);
+
+        CommentLike Delete(CommentLike toDelete);
     }
 }

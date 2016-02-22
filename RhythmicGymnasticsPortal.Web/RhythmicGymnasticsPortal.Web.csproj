@@ -208,15 +208,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Private\Controllers\CommentController.cs" />
     <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Areas\Private\Controllers\CommentLikeController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
-    <Compile Include="Controllers\NewsLikeController.cs" />
-    <Compile Include="Controllers\NewsLikesController.cs" />
+    <Compile Include="Areas\Private\Controllers\NewsLikeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -407,6 +408,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -461,12 +464,12 @@
     <Content Include="Views\News\_NewsCommentsPartial.cshtml" />
     <Content Include="Views\Shared\_NewsCommentsPagingPartial.cshtml" />
     <Content Include="Areas\Private\Views\Comment\_AddCommentPartial.cshtml" />
+    <Content Include="Views\News\_SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Private\Controllers\" />
     <Folder Include="Content\Kendo\Black\" />
     <Folder Include="Content\Kendo\BlueOpal\" />
     <Folder Include="Content\Kendo\Bootstrap\" />

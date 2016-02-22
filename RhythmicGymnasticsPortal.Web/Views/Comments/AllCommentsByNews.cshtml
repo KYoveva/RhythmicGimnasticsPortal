@@ -23,6 +23,13 @@
                         <div class="well">@comment.Content</div>
                         <span class="glyphicon glyphicon-calendar top"></span>&nbsp;@comment.DateCreated
                         <span class="badge top">by: @comment.Author </span>
+                        <span class="badge">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <span data-id="@comment.Id" data-action="up"><span class="glyphicon glyphicon glyphicon-thumbs-up"></span></span>
+                            }
+                            <span data-id="@comment.Id" data-action="likesCount">@comment.LikesCount</span>
+                        </span> 
                     </td>
                 </tr>
             </table>
@@ -35,3 +42,24 @@
         @Html.Partial("_CommentsPagingPartial", Model)
     </div>
 </div>
+<style>
+    span[data-action="up"] {
+        cursor: pointer;
+    }
+</style>
+@section scripts{
+    <script>
+        $("span[data-action='up'").click(function () {
+            var id = $(this).attr("data-id");
+            likeClick(id, 1);
+        });
+
+        function likeClick(id, likeType) {
+            $.post("/CommentLike/Like", { commentId: id, likeType: likeType },
+                function (data) {
+                    var likesCount = data.Count;
+                    $("span[data-action='likesCount'][data-id='" + id + "']").html(likesCount)
+                });
+        }
+    </script>
+}

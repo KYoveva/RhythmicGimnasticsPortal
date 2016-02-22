@@ -1,14 +1,11 @@
-﻿using RhythmicGymnasticsPortal.Data.Repositories;
-using RhythmicGymnasticsPortal.Models;
-using RhythmicGymnasticsPortal.Services.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace RhythmicGymnasticsPortal.Web.Controllers
+﻿namespace RhythmicGymnasticsPortal.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+    using RhythmicGymnasticsPortal.Models;
+    using RhythmicGymnasticsPortal.Services.Data;
+
+    [Authorize]
     public class NewsLikeController : BaseController
     {
         private NewsLikesService likes;
@@ -39,7 +36,7 @@ namespace RhythmicGymnasticsPortal.Web.Controllers
                 this.likes.Delete(like);
             }
 
-            var newsLikes = this.likes.AllLikes()
+           var newsLikes = this.likes.AllLikes()
                 .Where(x => x.NewsId == newsId);
 
             if(newsLikes.Count() < 1)
