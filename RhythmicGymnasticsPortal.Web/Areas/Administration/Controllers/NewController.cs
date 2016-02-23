@@ -37,64 +37,64 @@
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult News_Create([DataSourceRequest]DataSourceRequest request, News news)
+        public ActionResult News_Create([DataSourceRequest]DataSourceRequest request, NewsViewModel newsToadd)
         {
             if (ModelState.IsValid)
             {
                 var entity = new News
                 {
-                    Title = news.Title,
-                    Content = news.Content,
-                    DateCreated = news.DateCreated,
-                    CategoryId = news.CategoryId,
+                    Title = newsToadd.Title,
+                    Content = newsToadd.Content,
+                    DateCreated = newsToadd.DateCreated,
+                    CategoryId = newsToadd.CategoryId,
                     AuthorId = this.CurrentUser.Id
                 };
 
                 this.news.AddNews(entity);
-                news.Id = entity.Id;
+                newsToadd.Id = entity.Id;
             }
 
-            return Json(new[] { news }.ToDataSourceResult(request, ModelState));
+            return Json(new[] { newsToadd }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult News_Update([DataSourceRequest]DataSourceRequest request, News news)
+        public ActionResult News_Update([DataSourceRequest]DataSourceRequest request, NewsViewModel newsToUpdate)
         {
             if (ModelState.IsValid)
             {
                 var entity = new News
                 {
-                    Id = news.Id,
-                    Title = news.Title,
-                    Content = news.Content,
-                    DateCreated = news.DateCreated,
-                    CategoryId = news.CategoryId
+                    Id = newsToUpdate.Id,
+                    Title = newsToUpdate.Title,
+                    Content = newsToUpdate.Content,
+                    DateCreated = newsToUpdate.DateCreated,
+                    CategoryId = newsToUpdate.CategoryId
                 };
 
                 this.news.Update(entity);
             }
 
-            return Json(new[] { news }.ToDataSourceResult(request, ModelState));
+            return Json(new[] { newsToUpdate }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult News_Destroy([DataSourceRequest]DataSourceRequest request, News news)
+        public ActionResult News_Destroy([DataSourceRequest]DataSourceRequest request, NewsViewModel newsToDelete)
         {
             if (ModelState.IsValid)
             {
                 var entity = new News
                 {
-                    Id = news.Id,
-                    Title = news.Title,
-                    Content = news.Content,
-                    DateCreated = news.DateCreated,
-                    CategoryId = news.CategoryId
+                    Id = newsToDelete.Id,
+                    Title = newsToDelete.Title,
+                    Content = newsToDelete.Content,
+                    DateCreated = newsToDelete.DateCreated,
+                    CategoryId = newsToDelete.CategoryId
                 };
 
                 this.news.Delete(entity.Id);
             }
 
-            return Json(new[] { news }.ToDataSourceResult(request, ModelState));
+            return Json(new[] { newsToDelete }.ToDataSourceResult(request, ModelState));
         }
 
         //protected override void Dispose(bool disposing)

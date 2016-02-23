@@ -518,6 +518,10 @@
       <Project>{5b0f5939-3f94-4a54-ac53-3eb1ff7d56d4}</Project>
       <Name>RhythmicGymnasticsPortal.Services.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\RhythmicGymnasticsPortal.Services.Web\RhythmicGymnasticsPortal.Services.Web.csproj">
+      <Project>{531e1270-9979-483e-a543-d4396ecf7205}</Project>
+      <Name>RhythmicGymnasticsPortal.Services.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -18,13 +18,12 @@
 
         public string Author { get; set; }
 
-        public string Category { get; set; }
+        public string CategoryId { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<News, NewsViewModel>()
-                .ForMember(m => m.Author, opt => opt.MapFrom(x => x.Author.UserName))
-                .ForMember(m => m.Category, opt => opt.MapFrom(x => x.Category.CategoryName.ToString()));
+                .ForMember(m => m.Author, opt => opt.MapFrom(x => x.Author.UserName));
         }
     }
 }

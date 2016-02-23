@@ -45,13 +45,39 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\RhythmicGymnasticsPortal.Data\RhythmicGymnasticsPortal.Data.csproj">
+      <Project>{2509c25d-bf7d-4bcf-a863-e633d12859b8}</Project>
+      <Name>RhythmicGymnasticsPortal.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\RhythmicGymnasticsPortal.Models\RhythmicGymnasticsPortal.Models.csproj">
+      <Project>{1a5a764c-74d5-44ab-9507-12acb46d13e1}</Project>
+      <Name>RhythmicGymnasticsPortal.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RhythmicGymnasticsPortal.Common\RhythmicGymnasticsPortal.Common.csproj">
+      <Project>{885e33c3-28d0-44a0-8c70-b942baec69b7}</Project>
+      <Name>RhythmicGymnasticsPortal.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RhythmicGymnasticsPortal.Web\RhythmicGymnasticsPortal.Web.csproj">
+      <Project>{e50784f8-8c03-4662-b5e2-92471ac5e9c6}</Project>
+      <Name>RhythmicGymnasticsPortal.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\RhythmicGymnasticsPortal.Services.Data\RhythmicGymnasticsPortal.Services.Data.csproj">
+      <Project>{5b0f5939-3f94-4a54-ac53-3eb1ff7d56d4}</Project>
+      <Name>RhythmicGymnasticsPortal.Services.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

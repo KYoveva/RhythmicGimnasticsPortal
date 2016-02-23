@@ -3,17 +3,21 @@
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
     using Models.NewsModels;
-    using PagedList;
     using Services.Data.Contracts;
-    using Models.Comments;
+    using Services.Web.Contracts;
+    using System.Linq;
 
     public class HomeController : Controller
     {
+        private const int TimeForCache = (5 * 60);
+
+        private ICacheService cacheService;
         private INewsService newsService;
 
-        public HomeController(INewsService newsService)
+        public HomeController(INewsService newsService, ICacheService cacheService)
         {
             this.newsService = newsService;
+            this.cacheService = cacheService;
         }
 
         public ActionResult Index()
@@ -26,9 +30,12 @@
         public ActionResult GetNewsPartial()
         {
             var newsData =
-                this.newsService
+                this.cacheService.Get(
+                    "News",
+                    () => this.newsService
                         .LatestNews()
-                        .ProjectTo<NewsSimpleViewModel>();
+                        .ProjectTo<NewsSimpleViewModel>().ToList(),
+                    TimeForCache);
 
             return this.PartialView("_SimpleNewsPartial", newsData);
         }
