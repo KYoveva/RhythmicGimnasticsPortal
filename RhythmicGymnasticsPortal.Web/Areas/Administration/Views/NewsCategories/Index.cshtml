@@ -1,0 +1,33 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<RhythmicGymnasticsPortal.Web.Areas.Administration.Models.NewsCategoriesViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.CategoryName);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("NewsCategories_Read", "NewsCategories"))
+          .Create(create => create.Action("NewsCategories_Create", "NewsCategories"))
+          .Update(update => update.Action("NewsCategories_Update", "NewsCategories"))
+          .Destroy(destroy => destroy.Action("NewsCategories_Destroy", "NewsCategories"))
+      )
+)
+
+<script>
+    $("#grid").kendoGrid({
+        height: 500
+    });
+</script>

@@ -209,7 +209,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\NewController.cs" />
+    <Compile Include="Areas\Administration\Models\NewsCategoriesViewModel.cs" />
     <Compile Include="Areas\Administration\Models\NewsViewModel.cs" />
+    <Compile Include="Areas\Administration\Controllers\NewsCategoriesController.cs" />
     <Compile Include="Areas\Private\Controllers\CommentController.cs" />
     <Compile Include="Areas\Private\Controllers\ProductController.cs" />
     <Compile Include="Areas\Private\Controllers\UsersController.cs" />
@@ -418,6 +420,7 @@
     <Content Include="Areas\Administration\Views\New\Index.cshtml" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Views\Users\_UserProfilePartial.cshtml" />
+    <Content Include="Areas\Administration\Views\NewsCategories\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -487,6 +490,7 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Categories\AllProductsByCategory.cshtml" />
     <Content Include="Views\Categories\_ProductsByCategoryPagingPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\NewsCategoriesViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\Shared\" />
@@ -509,6 +513,7 @@
     <Folder Include="Content\Kendo\Silver\" />
     <Folder Include="Content\Kendo\textures\" />
     <Folder Include="Content\Kendo\Uniform\" />
+    <Folder Include="Views\NewsCategories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -61,11 +61,13 @@
     <Compile Include="CommentsService.cs" />
     <Compile Include="Contracts\ICommentsLikesService.cs" />
     <Compile Include="Contracts\ICommentsService.cs" />
+    <Compile Include="Contracts\INewsCategoryService.cs" />
     <Compile Include="Contracts\INewsLikesService.cs" />
     <Compile Include="Contracts\INewsService.cs" />
     <Compile Include="Contracts\IProductsCategoryService.cs" />
     <Compile Include="Contracts\IProductsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="NewsCategoryService.cs" />
     <Compile Include="NewsLikesService.cs" />
     <Compile Include="NewsService.cs" />
     <Compile Include="ProductsCategoryService.cs" />

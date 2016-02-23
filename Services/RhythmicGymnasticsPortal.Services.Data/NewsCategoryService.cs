@@ -2,20 +2,21 @@
 {
     using System;
     using System.Linq;
+    using Contracts;
     using Models;
-    using RhythmicGymnasticsPortal.Services.Data.Contracts;
     using RhythmicGymnasticsPortal.Data.Repositories;
 
-    public class ProductsCategoryService : IProductsCategoryService
+    public class NewsCategoryService : INewsCategoryService
     {
-        private IRepository<Category> categories;
+        private readonly IRepository<NewsCategory> categories;
 
-        public ProductsCategoryService(IRepository<Category> categories)
+        public NewsCategoryService(IRepository<NewsCategory> categories)
         {
             this.categories = categories;
         }
 
-        public Category AddCategory(Category toAdd)
+
+        public NewsCategory AddCategory(NewsCategory toAdd)
         {
             this.categories.Add(toAdd);
             this.categories.SaveChanges();
@@ -23,12 +24,12 @@
             return toAdd;
         }
 
-        public IQueryable<Category> AllProductCategories()
+        public IQueryable<NewsCategory> AllNewsCategories()
         {
             return this.categories.All();
         }
 
-        public IQueryable<Category> CategoryById(int id)
+        public IQueryable<NewsCategory> CategoryById(int id)
         {
             return this.categories.All().Where(x => x.Id == id);
         }
@@ -39,15 +40,7 @@
             this.categories.SaveChanges();
         }
 
-        public IQueryable<Product> ProductsByCategory(int id)
-        {
-            return this.categories
-                .All()
-                .Where(x => x.Id == id)
-                .SelectMany(x => x.Products);
-        }
-
-        public void Update(Category toUpdate)
+        public void Update(NewsCategory toUpdate)
         {
             this.categories.Update(toUpdate);
             this.categories.SaveChanges();

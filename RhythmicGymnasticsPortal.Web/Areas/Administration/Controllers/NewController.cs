@@ -1,13 +1,13 @@
 ﻿namespace RhythmicGymnasticsPortal.Web.Areas.Administration.Controllers
 {
     using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using RhythmicGymnasticsPortal.Models;
-    using RhythmicGymnasticsPortal.Web.Controllers;
-    using RhythmicGymnasticsPortal.Services.Data.Contracts;
-    using AutoMapper.QueryableExtensions;
     using Models;
+    using RhythmicGymnasticsPortal.Models;
+    using Services.Data.Contracts;
+    using Web.Controllers;
 
     [Authorize(Roles = "Admin")]
     public class NewController : BaseController
@@ -16,7 +16,7 @@
         private ICommentsService comments;
 
         public NewController(IUsersService users, INewsService news, ICommentsService comments)
-            :base(users)
+            : base(users)
         {
             this.news = news;
             this.comments = comments;
@@ -30,7 +30,7 @@
         public ActionResult News_Read([DataSourceRequest]DataSourceRequest request)
         {
 
-            DataSourceResult result = this.news.AllNews().ProjectTo<NewsViewModel>()    
+            DataSourceResult result = this.news.AllNews().ProjectTo<NewsViewModel>()
                 .ToDataSourceResult(request);
 
             return Json(result);
