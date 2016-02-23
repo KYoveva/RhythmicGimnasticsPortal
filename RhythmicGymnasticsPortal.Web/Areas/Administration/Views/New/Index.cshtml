@@ -8,7 +8,7 @@
     "<div style='overflow-y: scroll; height:100px;'>#: Content #</div>"
 );
           columns.Bound(c => c.DateCreated).Format("{0: yyyy-MM-dd HH:mm}");
-          columns.Bound(c => c.Category);
+          columns.Bound(c => c.CategoryId);
           columns.Bound(c => c.Author);
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })

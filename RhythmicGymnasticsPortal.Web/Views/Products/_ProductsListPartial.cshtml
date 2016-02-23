@@ -1,0 +1,30 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.Products.ProductDetailsViewModel>
+@foreach (var product in Model)
+{
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="badge">@product.Price EUR</span>
+            <span class="badge">
+                <span>@Html.ActionLink(product.Category.ToString(), "AllProductsByCategory/" + product.CategoryId, "Categories")</span>
+            </span>
+            <span><img src="@product.Images[0]" width="50"></span>
+            <div class="row">
+                <div class="col-sm-8">
+                    <p class="text-muted">@Html.ActionLink(product.Name, "Details/" + product.Id, "Products")</p>
+                    <p>
+                        @if (product.Description.Length <= 30)
+                        {
+                            @product.Description;
+                        }
+                        @if (product.Description.Length > 30)
+                {
+                            @product.Description.Substring(0, 30);
+                            <span>... @Html.ActionLink("See Details", "Details/" + product.Id, "Products")</span>
+                        }
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+}

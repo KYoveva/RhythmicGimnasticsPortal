@@ -211,15 +211,20 @@
     <Compile Include="Areas\Administration\Controllers\NewController.cs" />
     <Compile Include="Areas\Administration\Models\NewsViewModel.cs" />
     <Compile Include="Areas\Private\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Private\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Private\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Private\Models\Users\UsersViewModel.cs" />
     <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Areas\Private\Controllers\CommentLikeController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Areas\Private\Controllers\NewsLikeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,6 +237,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsModels\NewsDetailsViewModel.cs" />
     <Compile Include="Models\NewsModels\NewsSimpleViewModel.cs" />
+    <Compile Include="Models\Products\ProductDetailsViewModel.cs" />
+    <Compile Include="Models\Products\ProductsSimpleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -240,7 +247,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\21445963-Rhythmic-gymnastics-woman-with-ribbon-vector-abstract-background-splashes-for-poster-Stock-Vector.jpg" />
     <Content Include="Content\Images\background.png" />
-    <Content Include="Content\Images\images.jpg" />
+    <Content Include="Content\Images\Ball-Sasaki-M-20A-W-0.jpg" />
+    <Content Include="Content\Images\hoop.jpeg" />
+    <Content Include="Content\Images\Keulen-Sasaki-Gummi-M-34-PP-3.jpg" />
+    <Content Include="Content\Images\ribbon.jpeg" />
+    <Content Include="Content\Images\Seil-3m-M-280-LD-0[1].jpg" />
     <Content Include="Content\Kendo\kendo.black.min.css" />
     <Content Include="Content\Kendo\kendo.black.mobile.min.css" />
     <Content Include="Content\Kendo\kendo.blueopal.min.css" />
@@ -406,6 +417,7 @@
     <Content Include="Areas\Private\Views\Comment\_SingleCommentPartial.cshtml" />
     <Content Include="Areas\Administration\Views\New\Index.cshtml" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Views\Users\_UserProfilePartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -467,12 +479,17 @@
     <Content Include="Views\News\_NewsCommentsPartial.cshtml" />
     <Content Include="Views\Shared\_NewsCommentsPagingPartial.cshtml" />
     <Content Include="Areas\Private\Views\Comment\_AddCommentPartial.cshtml" />
-    <Content Include="Views\News\_SearchPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\NewsViewModel.cshtml" />
+    <Content Include="Views\Home\_SimpleProductsPartial.cshtml" />
+    <Content Include="Views\Products\All.cshtml" />
+    <Content Include="Views\Products\_ProductsListPartial.cshtml" />
+    <Content Include="Views\Products\_ProductsPagingPartial.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Categories\AllProductsByCategory.cshtml" />
+    <Content Include="Views\Categories\_ProductsByCategoryPagingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Private\Views\Shared\" />
     <Folder Include="Content\Kendo\Black\" />
     <Folder Include="Content\Kendo\BlueOpal\" />
     <Folder Include="Content\Kendo\Bootstrap\" />
@@ -492,7 +509,6 @@
     <Folder Include="Content\Kendo\Silver\" />
     <Folder Include="Content\Kendo\textures\" />
     <Folder Include="Content\Kendo\Uniform\" />
-    <Folder Include="Views\New\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -517,6 +533,10 @@
     <ProjectReference Include="..\Services\RhythmicGymnasticsPortal.Services.Data\RhythmicGymnasticsPortal.Services.Data.csproj">
       <Project>{5b0f5939-3f94-4a54-ac53-3eb1ff7d56d4}</Project>
       <Name>RhythmicGymnasticsPortal.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\RhythmicGymnasticsPortal.Services.Web\RhythmicGymnasticsPortal.Services.Web.csproj">
+      <Project>{531e1270-9979-483e-a543-d4396ecf7205}</Project>
+      <Name>RhythmicGymnasticsPortal.Services.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,66 @@
+﻿@model RhythmicGymnasticsPortal.Web.Models.Products.ProductDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        @foreach (var image in Model.Images)
+                        {
+                            <div class="col"><img src="@image.ToString()" width="100" /></div>
+                        }
+                    </td>
+                    <td>
+                        <div class="col">
+                            <h1 class="text-muted">@Html.DisplayFor(m => m.Name, "Name")</h1>
+                            <p>
+                                @Html.DisplayFor(m => m.Description, "Description")
+                            </p>
+                            <p>
+                                Material: @Html.DisplayFor(m => m.Material, "Material")
+                            </p>
+                            <p>
+                                Color: @Html.DisplayFor(m => m.Color, "Color")
+                            </p>
+                            <p>
+                                <span class="badge">
+                                    Price: @Model.Price EUR
+                                </span>
+                            </p>
+                            <span class="badge">
+                                Availability <span data-id="@Model.Id" data-action="quqntityAvailable">@Model.Quantity</span>
+                            </span>
+                            <br />
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div data-id="@Model.Id" data-action="click" class="text-center"><input type="submit" value="Add to Cart" /></div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $("div[data-action='click'").click(function () {
+            var id = $(this).attr("data-id");
+            buy(id, 1);
+        });
+
+        function buy(id, quantity) {
+            $.post("/Product/Buy", { productId: id, quantity: quantity },
+                function (data) {
+                    var quantity = data.Count;
+                    $("span[data-action='quqntityAvailable'][data-id='" + id + "']").html(quantity)
+                });
+        }
+    </script>
+}

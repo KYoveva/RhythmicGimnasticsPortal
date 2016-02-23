@@ -8,13 +8,15 @@ namespace RhythmicGymnasticsPortal.Web.App_Start
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
+    using Common;
+    using Data;
+    using Data.Repositories;
     using Ninject;
     using Ninject.Extensions.Conventions;
     using Ninject.Web.Common;
-    using Data;
-    using Data.Repositories;
-    using Common;
-    
+    using Services.Web.Contracts;
+    using Services.Web;
+
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -66,6 +68,7 @@ namespace RhythmicGymnasticsPortal.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IRhythmicGymnasticsPortalDbContext>().To<RhythmicGymnasticsPortalDbContext>();
+            kernel.Bind<ICacheService>().To<HttpCacheService>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind(b => b
     .From(GlobalConstants.DataServices)

@@ -12,12 +12,14 @@
         private ICollection<News> news;
         private ICollection<NewsLike> newsLikes;
         private ICollection<CommentLike> commentLikes;
+        private ICollection<Comment> comments;
 
         public User()
         {
             this.news = new HashSet<News>();
             this.newsLikes = new HashSet<NewsLike>();
             this.commentLikes = new HashSet<CommentLike>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Required]
@@ -46,6 +48,12 @@
         {
             get { return this.commentLikes; }
             set { this.commentLikes = value; }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

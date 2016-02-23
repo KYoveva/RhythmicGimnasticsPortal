@@ -1,19 +1,26 @@
 ﻿namespace RhythmicGymnasticsPortal.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
     using Models.NewsModels;
-    using PagedList;
+    using Models.Products;
     using Services.Data.Contracts;
-    using Models.Comments;
+    using Services.Web.Contracts;
 
     public class HomeController : Controller
     {
-        private INewsService newsService;
+        private const int TimeForCache = (5 * 60);
 
-        public HomeController(INewsService newsService)
+        private ICacheService cacheService;
+        private INewsService newsService;
+        private IProductsService productsService;
+
+        public HomeController(INewsService newsService, IProductsService productsService, ICacheService cacheService)
         {
             this.newsService = newsService;
+            this.productsService = productsService;
+            this.cacheService = cacheService;
         }
 
         public ActionResult Index()
@@ -26,11 +33,29 @@
         public ActionResult GetNewsPartial()
         {
             var newsData =
-                this.newsService
+                this.cacheService.Get(
+                    "News",
+                    () => this.newsService
                         .LatestNews()
-                        .ProjectTo<NewsSimpleViewModel>();
+                        .ProjectTo<NewsSimpleViewModel>().ToList(),
+                    TimeForCache);
 
             return this.PartialView("_SimpleNewsPartial", newsData);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult GetProductsPartial()
+        {
+            var productsData =
+                this.cacheService.Get(
+                    "Products",
+                    () => this.productsService
+                        .TopSelling()
+                        .ProjectTo<ProductsSimpleViewModel>().ToList(),
+                    TimeForCache);
+
+            return this.PartialView("_SimpleProductsPartial", productsData);
         }
     }
 }

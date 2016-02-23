@@ -4,11 +4,11 @@
     using System.Web.Mvc;
     using Area.Private.Models.News;
     using AutoMapper;
-    using Models.Comments;
     using RhythmicGymnasticsPortal.Models;
     using Services.Data;
     using Web.Controllers;
     using Services.Data.Contracts;
+    using Web.Models.Comments;
 
     [Authorize]
     public class CommentController : BaseController

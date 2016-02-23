@@ -149,6 +149,11 @@
         {
             if (ModelState.IsValid)
             {
+                if (model.Avatar == null)
+                {
+                    model.Avatar = "http://static.customizedgirl.com/images/storefront/avatar_5898.png";
+                }
+
                 var user = new User
                 {
                     UserName = model.UserName,
