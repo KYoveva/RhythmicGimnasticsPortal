@@ -63,9 +63,13 @@
     <Compile Include="Contracts\ICommentsService.cs" />
     <Compile Include="Contracts\INewsLikesService.cs" />
     <Compile Include="Contracts\INewsService.cs" />
+    <Compile Include="Contracts\IProductsCategoryService.cs" />
+    <Compile Include="Contracts\IProductsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="NewsLikesService.cs" />
     <Compile Include="NewsService.cs" />
+    <Compile Include="ProductsCategoryService.cs" />
+    <Compile Include="ProductsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>

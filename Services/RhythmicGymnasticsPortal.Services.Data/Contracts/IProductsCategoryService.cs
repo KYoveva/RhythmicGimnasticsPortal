@@ -3,10 +3,8 @@
     using System.Linq;
     using Models;
 
-    public interface IUsersService
+    public interface IProductsCategoryService
     {
-        IQueryable<User> AllUsers();
-
-        IQueryable<User> UserById(string id);
+        IQueryable<Product> ProductsByCategory(int id);
     }
 }

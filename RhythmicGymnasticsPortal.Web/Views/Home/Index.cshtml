@@ -6,7 +6,15 @@
     <h1 id="home-header" class="text-center">Rhythmic Gymnastics</h1>
 </div>
 
-<div class="jumbotron transparentBlock">
-        <div class="panel-heading text-center">Latest News</div>
-        @{Html.RenderAction("GetNewsPartial");}
+<div class="jumbotron transparentBlock text-center">
+    <table>
+        <tr>
+            <th class="text-center">Latest News</th>
+            <th class="text-center">Top Selling Products</th>
+        </tr>
+        <tr>
+            <td class="text-center">@{Html.RenderAction("GetNewsPartial");}</td>
+            <td class="text-center">@{Html.RenderAction("GetProductsPartial");}</td>
+        </tr>
+    </table>
 </div>

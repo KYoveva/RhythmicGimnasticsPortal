@@ -1,0 +1,75 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.Products.ProductDetailsViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    @Styles.Render("~/bundles/pagedlist")
+}
+<section>
+    <div class="container">
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        Find by title: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                        <input type="submit" value="Search" />
+                    </p>
+                }
+            </div>
+            <div class="col-md-4 col-md-offset-1">
+                <ul class="nav navbar-nav">
+                    <li class="navbar-brand">Sorty by:</li>
+                    <li>@Html.ActionLink("Name", "AllProductsByCategory", "Categories", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, null)</li>
+                    <li>@Html.ActionLink("Price", "AllProductsByCategory", "Categories", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter }, null)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                @foreach (var product in Model)
+                {
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">@product.Price EUR</span>
+                            <span class="badge">
+                                <span>@Html.ActionLink(product.Category.ToString(), "AllProductsByCategory/" + product.CategoryId, "Categories")</span>
+                            </span>
+                            <span><img src="@product.Images[0]" width="50"></span>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <p class="text-muted">@Html.ActionLink(product.Name, "Details/" + product.Id, "Products")</p>
+                                    <p>
+                                        @if (product.Description.Length <= 30)
+                                        {
+                                            @product.Description;
+                                        }
+                                        @if (product.Description.Length > 30)
+                                        {
+                                            @product.Description.Substring(0, 30);
+                                            <span>... @Html.ActionLink("See Details", "Details/" + product.Id, "Products")</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                @Html.Partial("_ProductsByCategoryPagingPartial", Model)
+            </div>
+        </div>
+    </div>
+</section>

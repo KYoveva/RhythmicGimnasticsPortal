@@ -19,9 +19,10 @@
             return this.users.All();
         }
 
-        public User UserById(string id)
+        public IQueryable<User> UserById(string id)
         {
-            return this.users.All().FirstOrDefault(x => x.Id == id);
+            return this.users.All()
+                .Where(x => x.Id == id);
         }
     }
 }
