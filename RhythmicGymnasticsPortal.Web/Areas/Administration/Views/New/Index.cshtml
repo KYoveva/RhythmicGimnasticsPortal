@@ -1,0 +1,43 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<RhythmicGymnasticsPortal.Web.Areas.Administration.Models.NewsViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Title);
+          columns.Bound(c => c.Content).ClientTemplate(
+    "<div style='overflow-y: scroll; height:100px;'>#: Content #</div>"
+);
+          columns.Bound(c => c.DateCreated).Format("{0: yyyy-MM-dd HH:mm}");
+          columns.Bound(c => c.Category);
+          columns.Bound(c => c.Author);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .Resizable(resize => resize.Columns(true))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("News_Read", "New"))
+          .Create(create => create.Action("News_Create", "New"))
+          .Update(update => update.Action("News_Update", "New"))
+          .Destroy(destroy => destroy.Action("News_Destroy", "New"))
+      )
+)
+
+<script>
+    $("#grid").kendoGrid({
+        height: 500
+    });
+</script>

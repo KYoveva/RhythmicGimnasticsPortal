@@ -4,12 +4,13 @@
 }
 
 @using (Ajax.BeginForm("AddComment", "Comment",
-                                                        new AjaxOptions
-                                                        {
-                                                            HttpMethod = "POST",
-                                                            InsertionMode = InsertionMode.InsertBefore,
-                                                            UpdateTargetId = "comments"
-                                                        }))
+                                                                                    new AjaxOptions
+                                                                                    {
+                                                                                        HttpMethod = "POST",
+                                                                                        InsertionMode = InsertionMode.InsertBefore,
+                                                                                        UpdateTargetId = "comments"
+                                                                                    }))
+
 {
     @Html.AntiForgeryToken()
 
@@ -25,6 +26,7 @@
     </form>
     <br />
 }
-@section Scripts {
+
+@section scripts{
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -8,13 +8,14 @@
     using RhythmicGymnasticsPortal.Models;
     using Services.Data;
     using Web.Controllers;
+    using Services.Data.Contracts;
 
     [Authorize]
     public class CommentController : BaseController
     {
-        private CommentsService comments;
+        private ICommentsService comments;
 
-        public CommentController(UsersService users, CommentsService comments)
+        public CommentController(IUsersService users, ICommentsService comments)
             : base(users)
         {
             this.comments = comments;
