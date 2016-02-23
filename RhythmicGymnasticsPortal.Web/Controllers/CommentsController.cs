@@ -1,6 +1,5 @@
 ﻿namespace RhythmicGymnasticsPortal.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
@@ -8,15 +7,19 @@
     using PagedList;
     using Services.Data.Contracts;
 
-    public class CommentsController : Controller
+    [Authorize]
+    public class CommentsController : BaseController
     {
         private const int PageSize = 10;
 
-        private ICommentService comments;
+        private ICommentsService comments;
+        private INewsService news;
 
-        public CommentsController(ICommentService comments)
+        public CommentsController(IUsersService users, ICommentsService comments, INewsService news)
+            : base(users)
         {
             this.comments = comments;
+            this.news = news;
         }
 
         public ActionResult AllCommentsByNews(string sortOrder, int? page, int id)

@@ -1,0 +1,22 @@
+﻿@model RhythmicGymnasticsPortal.Web.Models.Comments.CommentsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-sm-8">
+    <h3>This is your comment</h3>
+        <table>
+            <tr>
+                <td style="vertical-align:top"><img class="media-object" src="@Model.Avatar" width="50"></td>
+                <td>
+                    <div class="well">@Model.Content</div>
+                    <span class="glyphicon glyphicon-calendar top"></span>&nbsp;@Model.DateCreated
+                    <span class="badge top">by: @Model.Author </span>
+                </td>
+            </tr>
+        </table>
+        <br />
+</div>
+
+
+

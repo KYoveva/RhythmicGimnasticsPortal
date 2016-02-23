@@ -57,6 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Extensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=69c3241e6f0468ca, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -207,18 +208,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Private\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Areas\Private\Controllers\CommentLikeController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Areas\Private\Controllers\NewsLikeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\IMapFrom.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Comment\CommentsViewModel.cs" />
+    <Compile Include="Areas\Private\Models\News\CommentsInputModel.cs" />
+    <Compile Include="Models\Comments\CommentsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsModels\NewsDetailsViewModel.cs" />
@@ -392,11 +399,17 @@
     <Content Include="Content\Kendo\kendo.uniform.min.css.map" />
     <Content Include="Content\Kendo\kendo.uniform.mobile.min.css.map" />
     <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Private\Views\web.config" />
+    <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Private\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Private\Views\Comment\_SingleCommentPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -450,6 +463,8 @@
     <Content Include="Views\Comments\_CommentsPagingPartial.cshtml" />
     <Content Include="Views\News\_NewsCommentsPartial.cshtml" />
     <Content Include="Views\Shared\_NewsCommentsPagingPartial.cshtml" />
+    <Content Include="Areas\Private\Views\Comment\_AddCommentPartial.cshtml" />
+    <Content Include="Views\News\_SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Controllers\" />

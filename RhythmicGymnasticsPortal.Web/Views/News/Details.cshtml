@@ -1,4 +1,6 @@
-﻿@model RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsDetailsViewModel
+﻿@using RhythmicGymnasticsPortal.Web.Area.Private.Models.News
+
+@model RhythmicGymnasticsPortal.Web.Models.NewsModels.NewsDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -14,29 +16,46 @@
                         @Html.DisplayFor(m => m.Content, "Content")
                     </p>
                     <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>&nbsp;@Model.DateCreated  <span class="badge">by: @Model.Author </span></p>
+                    <span class="badge">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <span data-id="@Model.Id" data-action="up"><span class="glyphicon glyphicon glyphicon-thumbs-up"></span></span>
+                        }
+                        <span data-id="@Model.Id" data-action="likesCount">@Model.LikesCount</span>
+                    </span> 
                 </div>
             </div>
             <br />
             <div class="row">
-                @*<div class="col-sm-8">
-                    <h3>Comments</h3>
-                    @foreach (var comment in Model.Comments)
-                    {
-                        <table>
-                            <tr>
-                                <td style="vertical-align:top"><img class="media-object" src="@comment.Avatar" width="50"></td>
-                                <td>
-                                    <div class="well">@comment.Content</div>
-                                    <span class="glyphicon glyphicon-calendar top"></span>&nbsp;@comment.DateCreated
-                                    <span class="badge top">by: @comment.Author </span>
-                                </td>
-                            </tr>
-                        </table>
-                        <br />
-                    }
-                </div>*@
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.Partial("~/Areas/Private/Views/Comment/_AddCommentPartial.cshtml", new CommentsInputModel(Model.Id))
+                }
+            </div>
+            <div class="row">
                 @{Html.RenderAction("_NewsCommentsPartial");}
             </div>
         </div>
     </div>
 </div>
+<style>
+    span[data-action="up"] {
+        cursor: pointer;
+    }
+</style>
+@section scripts{
+    <script>
+        $("span[data-action='up'").click(function () {
+            var id = $(this).attr("data-id");
+            likeClick(id, 1);
+        });
+
+        function likeClick(id, likeType) {
+            $.post("/NewsLike/Like", { newsId: id, likeType: likeType },
+                function (data) {
+                    var likesCount = data.Count;
+                    $("span[data-action='likesCount'][data-id='" + id + "']").html(likesCount)
+                });
+        }
+    </script>
+}

@@ -38,8 +38,7 @@
 
         public IQueryable<News> NewsById(int id)
         {
-            return this.news.All()
-                .Where(x => x.Id == id);
+            return this.news.All().Where(x => x.Id == id);
         }
     }
 }
