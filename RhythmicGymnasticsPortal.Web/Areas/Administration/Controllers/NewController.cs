@@ -68,7 +68,8 @@
                     Title = newsToUpdate.Title,
                     Content = newsToUpdate.Content,
                     DateCreated = newsToUpdate.DateCreated,
-                    CategoryId = newsToUpdate.CategoryId
+                    CategoryId = newsToUpdate.CategoryId,
+                    AuthorId = CurrentUser.Id
                 };
 
                 this.news.Update(entity);

@@ -44,7 +44,8 @@ namespace RhythmicGymnasticsPortal.Data.Migrations
                 Email = "admin@admin.com",
                 UserName = "admin",
                 FirstName = "Kristina",
-                LastName = "Yoveva"
+                LastName = "Yoveva",
+                Avatar = "https://upload.wikimedia.org/wikipedia/commons/f/f8/Kanaeva1.jpg"
             };
 
             this.userManager.Create(user, "admin123");

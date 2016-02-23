@@ -12,6 +12,7 @@
 
         public string Title { get; set; }
 
+        [UIHint("MultilineText")]
         public string Content { get; set; }
 
         public DateTime DateCreated { get; set; }

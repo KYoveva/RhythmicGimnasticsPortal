@@ -6,7 +6,7 @@
           columns.Bound(c => c.Title);
           columns.Bound(c => c.Content).ClientTemplate(
     "<div style='overflow-y: scroll; height:100px;'>#: Content #</div>"
-);
+).Width(200);
           columns.Bound(c => c.DateCreated).Format("{0: yyyy-MM-dd HH:mm}");
           columns.Bound(c => c.CategoryId);
           columns.Bound(c => c.Author);

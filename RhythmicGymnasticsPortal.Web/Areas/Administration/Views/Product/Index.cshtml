@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<RhythmicGymnasticsPortal.Web.Areas.Administration.Models.ProductsViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Name);
+          columns.Bound(c => c.Description).ClientTemplate(
+    "<div style='overflow-y: scroll; height:100px;'>#: Description #</div>"
+).Width(200); 
+          columns.Bound(c => c.Price);
+          columns.Bound(c => c.Quantity);
+          columns.Bound(c => c.SoldQuantity);
+          columns.Bound(c => c.Material);
+          columns.Bound(c => c.Color);
+          columns.Bound(c=>c.CategoryId);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+          toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Products_Read", "Product"))
+          .Create(create => create.Action("Products_Create", "Product"))
+          .Update(update => update.Action("Products_Update", "Product"))
+          .Destroy(destroy => destroy.Action("Products_Destroy", "Product"))
+      )
+)
+
+<script>
+    $("#grid").kendoGrid({
+        height: 500
+    });
+</script>
