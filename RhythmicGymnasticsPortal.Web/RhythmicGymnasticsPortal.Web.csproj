@@ -208,6 +208,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\NewController.cs" />
+    <Compile Include="Areas\Administration\Models\NewsViewModel.cs" />
     <Compile Include="Areas\Private\Controllers\CommentController.cs" />
     <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -401,8 +403,9 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Private\Views\web.config" />
     <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Private\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Private\Views\Comment\_SingleCommentPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\New\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -465,11 +468,11 @@
     <Content Include="Views\Shared\_NewsCommentsPagingPartial.cshtml" />
     <Content Include="Areas\Private\Views\Comment\_AddCommentPartial.cshtml" />
     <Content Include="Views\News\_SearchPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\NewsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Administration\Controllers\" />
-    <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Private\Views\Shared\" />
     <Folder Include="Content\Kendo\Black\" />
     <Folder Include="Content\Kendo\BlueOpal\" />
     <Folder Include="Content\Kendo\Bootstrap\" />
@@ -489,6 +492,7 @@
     <Folder Include="Content\Kendo\Silver\" />
     <Folder Include="Content\Kendo\textures\" />
     <Folder Include="Content\Kendo\Uniform\" />
+    <Folder Include="Views\New\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

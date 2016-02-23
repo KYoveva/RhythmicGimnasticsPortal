@@ -30,6 +30,12 @@
             return this.news.All();                
         }
 
+        public void Delete(int id)
+        {
+            this.news.Delete(id);
+            this.news.SaveChanges();
+        }
+
         public IQueryable<News> LatestNews()
         {
             return this.news.All()
@@ -39,6 +45,12 @@
         public IQueryable<News> NewsById(int id)
         {
             return this.news.All().Where(x => x.Id == id);
+        }
+
+        public void Update(News toUpdate)
+        {
+            this.news.Update(toUpdate);
+            this.news.SaveChanges();
         }
     }
 }

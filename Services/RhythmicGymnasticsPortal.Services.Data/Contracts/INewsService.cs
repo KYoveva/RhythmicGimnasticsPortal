@@ -12,5 +12,9 @@
         IQueryable<News> NewsById(int id);
 
         News AddNews(News toAdd);
+
+        void Delete(int id);
+
+        void Update(News toUpdate);
     }
 }

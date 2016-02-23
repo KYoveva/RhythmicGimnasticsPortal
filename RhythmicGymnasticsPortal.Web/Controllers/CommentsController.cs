@@ -7,7 +7,6 @@
     using PagedList;
     using Services.Data.Contracts;
 
-    [Authorize]
     public class CommentsController : BaseController
     {
         private const int PageSize = 10;
