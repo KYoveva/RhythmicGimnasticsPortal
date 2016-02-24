@@ -17,7 +17,7 @@
         }
 
         [Required]
-        [StringLength(1000)]
+        [StringLength(1000), MinLength(1)]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 

@@ -34,5 +34,11 @@
             return this.comments.All()
                 .Where(x => x.NewsId == id);
         }
+
+        public void Delete(Comment toDelete)
+        {
+            this.comments.Delete(toDelete);
+            this.comments.SaveChanges();
+        }
     }
 }

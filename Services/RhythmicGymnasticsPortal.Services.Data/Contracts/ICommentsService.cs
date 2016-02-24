@@ -10,5 +10,7 @@
         IQueryable<Comment> CommentsByNews(int id);
 
         Comment AddComment(Comment toAdd);
+
+        void Delete(Comment toDelete);
     }
 }

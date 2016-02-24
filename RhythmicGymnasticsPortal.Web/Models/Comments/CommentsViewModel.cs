@@ -18,6 +18,8 @@
 
         public string Author { get; set; }
 
+        public string AuthorId { get; set; }
+
         public int NewsId { get; set; }
 
         public int LikesCount { get; set; }

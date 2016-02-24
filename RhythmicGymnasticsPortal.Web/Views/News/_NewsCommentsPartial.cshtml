@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<RhythmicGymnasticsPortal.Web.Models.Comments.CommentsViewModel>
 @using PagedList.Mvc;
+@using Microsoft.AspNet.Identity;
 
 @section styles {
     @Styles.Render("~/bundles/pagedlist")
@@ -26,11 +27,15 @@
                             <span data-id="@comment.Id" data-action="likeComment"><span class="glyphicon glyphicon glyphicon-thumbs-up"></span></span>
                         }
                         <span data-id="@comment.Id" data-action="commentLikesCount">@comment.LikesCount</span>
-                    </span> 
+                    </span>
+                    @if (User.Identity.GetUserId() == comment.AuthorId)
+                    {
+                        <span data-id="@comment.Id" data-action="delete"><input type="submit" value="Delete" /></span>
+                    }
                 </td>
             </tr>
         </table>
-            <br />
+        <br />
     }
 </div>
 <div class="row">
@@ -56,6 +61,18 @@
                     var likesCount = data.Count;
                     $("span[data-action='commentLikesCount'][data-id='" + id + "']").html(likesCount)
                 });
+        }
+
+        $("span[data-action='delete'").click(function () {
+            var id = $(this).attr("data-id");
+            deleteClick(id);
+        });
+
+        function deleteClick(id) {
+            $.post("/Comment/Delete", { id: id },
+            function (data) {
+                location.reload();
+            });
         }
     </script>
 }
