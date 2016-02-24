@@ -56,7 +56,7 @@
         });
 
         function buy(id, quantity) {
-            $.post("/Product/Buy", { productId: id, quantity: quantity },
+            $.post("/ProductBuy/Buy", { productId: id, quantity: quantity },
                 function (data) {
                     var quantity = data.Count;
                     $("span[data-action='quqntityAvailable'][data-id='" + id + "']").html(quantity)

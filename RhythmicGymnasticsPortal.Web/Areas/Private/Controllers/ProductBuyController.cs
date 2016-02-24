@@ -10,11 +10,11 @@
     using Services.Data.Contracts;
 
     [Authorize]
-    public class ProductController : BaseController
+    public class ProductBuyController : BaseController
     {
         private IProductsService products;
 
-        public ProductController(IUsersService users, IProductsService products)
+        public ProductBuyController(IUsersService users, IProductsService products)
             : base(users)
         {
             this.products = products;
