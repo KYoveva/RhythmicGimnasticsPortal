@@ -31,7 +31,6 @@
 ### ASP NET MVC 5 application powered by:
 
 - ASP.NET MVC 
-- ASP.NET SignalR - Incredibly simple real-time web for .NET
 - Microsoft SQL Server
 - Ninject - Dependency injector for .NET
 - Automapper - A convention-based object-object mapper
@@ -40,12 +39,7 @@
 - jQuery.Validation - Client site validation
 - jQuery.Unobtrusive.Ajax - For Ajax requests
 - Kendo UI for ASP.NET MVC - Generating UI
-- HtmlSanitizer - Avoiding  XSS attacks
-- FluentMvcTesting - For unit testing the controllers
-- Moq - Mocking objects by unit-testing
-- NProgress.js - Adds a page loading bar
 - PagedList.Mvc - Used for pagination 
-- reCAPTCH.MVC -  Protects the site from spam and abuse
 
 ### Usage of Kendo UI for ASP.NET MVC
 
